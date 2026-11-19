@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Protection &amp; UK GDPR — Marcus AI: Home Launcher</title>
+  <meta name="description" content="UK GDPR and on-device data protection technical notice for Marcus AI: Home Launcher v0.2.4." />
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #030914;
+      --surface: #0b1322;
+      --elevated: #111c32;
+      --border: #1e2d4a;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --emerald: #34d399;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.68;
+      padding: 24px 16px 64px;
+    }
+    .wrap { max-width: 820px; margin: 0 auto; }
+    nav { margin-bottom: 16px; font-size: 13px; color: var(--muted); }
+    nav a { color: var(--accent); text-decoration: none; margin-right: 12px; }
+    header, section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+    }
+    h1 { margin: 0 0 8px; font-size: 26px; }
+    h2 { margin: 0 0 10px; font-size: 18px; color: var(--accent); }
+    p, li { font-size: 14px; color: #cbd5e1; }
+    ul { margin: 8px 0 0; padding-left: 20px; }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+      background: var(--elevated);
+      padding: 2px 6px;
+      border-radius: 6px;
+      color: #7dd3fc;
+    }
+    .meta { margin: 0; font-size: 13px; color: var(--muted); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+    th, td {
+      text-align: left;
+      padding: 10px 8px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th { color: var(--accent); font-weight: 600; }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a href="./index.html">&larr; Legal Center</a>
+      <a href="./privacy.html">Privacy Policy</a>
+      <a href="./permissions.html">Permissions</a>
+      <a href="./terms.html">Terms</a>
+      <a href="./support.html">Support</a>
+    </nav>
+
+    <header>
+      <h1>Data Protection &amp; UK GDPR Notice</h1>
+      <p class="meta">
+        Controller: <strong>Jack Chris Franklin</strong> &middot;
+        Contact: <a href="mailto:jackchrisfranklin@gmail.com">jackchrisfranklin@gmail.com</a><br />
+        Applies to: <strong>Marcus AI: Home Launcher</strong> v0.2.4 (<code>com.jchristopherfranklin.marcus</code>, Build 28)
+      </p>
+    </header>
+
+    <section>
+      <h2>1. Purpose &amp; Lawful Basis</h2>
+      <p>
+        All personal data processed inside Marcus AI: Home Launcher remains strictly on your device to perform the launcher, voice assistant, note-taking, alarm, and media-playback functions you directly invoke (UK GDPR Article 6(1)(b) &mdash; performance of a requested service, and Article 6(1)(a) &mdash; explicit consent for optional camera face unlock, GPS weather, notification access, and voice memory logging).
+      </p>
+    </section>
+
+    <section>
+      <h2>2. On-Device Files &amp; Backup Exclusions</h2>
+      <p>
+        In accordance with Android&rsquo;s <code>backup_rules.xml</code> and <code>data_extraction_rules.xml</code>, sensitive local SharedPreferences and private app files are excluded from Google cloud backups, and large downloaded model/audio directories are also excluded from device-to-device transfers:
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Private Storage Path</th>
+            <th>Contents</th>
+            <th>Backup &amp; Transfer Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>marcus_mobile_prefs_v2.xml</code> (SharedPreferences)</td>
+            <td>Settings, notes, alarms, reminders, intents, optional face profiles, optional HF token</td>
+            <td>Excluded from cloud backup</td>
+          </tr>
+          <tr>
+            <td><code>marcus_weather_v1.xml</code> &amp; <code>marcus_error_monitor_v1.xml</code></td>
+            <td>Cached weather snapshot &amp; local anti-crash diagnostics</td>
+            <td>Excluded from cloud backup</td>
+          </tr>
+          <tr>
+            <td><code>files/sync_memory.csv</code></td>
+            <td>Optional voice/text conversation turns (exported as <code>memory.csv</code>)</td>
+            <td>Excluded from cloud backup</td>
+          </tr>
+          <tr>
+            <td><code>files/knowledge_bank.json</code></td>
+            <td>Zero-PII offline public factual summaries</td>
+            <td>Excluded from cloud backup</td>
+          </tr>
+          <tr>
+            <td><code>files/voice_vault</code></td>
+            <td>Local Voice Vault M4A audio recordings</td>
+            <td>Excluded from cloud backup</td>
+          </tr>
+          <tr>
+            <td><code>files/custom_wallpaper.jpg</code></td>
+            <td>User-selected launcher background image</td>
+            <td>Excluded from cloud backup</td>
+          </tr>
+          <tr>
+            <td><code>files/models</code> &amp; <code>files/piper_voices</code></td>
+            <td>Downloaded LiteRT-LM models &amp; Piper ONNX voice packs</td>
+            <td>Excluded from cloud backup &amp; device transfer</td>
+          </tr>
+          <tr>
+            <td><code>files/builtin_audio</code></td>
+            <td>Built-in audio tracks for offline player</td>
+            <td>Excluded from cloud backup &amp; device transfer</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>3. Zero-PII Filtering in the Offline Knowledge Bank</h2>
+      <p>
+        Before any web-search summary is written to <code>knowledge_bank.json</code>, <code>KnowledgeBankManager</code> strips any <code>https?://</code> URLs and <code>@handle</code> mentions and runs a strict two-stage check:
+      </p>
+      <ul>
+        <li><strong>Deterministic Regex Blocker:</strong> Rejects entries containing your configured user name, email addresses, phone numbers, street addresses, UK postcodes, IPv4 addresses, API keys/tokens (such as <code>AIza...</code>, <code>hf_...</code>, <code>sk-...</code>, <code>ghp_...</code>, <code>Bearer</code>), 6+ consecutive digits, or personal query indicators (<code>my name is</code>, <code>my address</code>, <code>my phone</code>, <code>my password</code>, <code>my bank</code>, <code>my national insurance</code>, <code>my social security</code>, etc.).</li>
+        <li><strong>On-Device LLM Privacy Auditor:</strong> When a local model is loaded, evaluates sanitized topics and summaries via a strict UK GDPR prompt and rejects anything not explicitly returned as <code>SAFE</code>.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Your UK GDPR Rights Built Into Settings</h2>
+      <p>Because your data stays on your device, you exercise your data protection rights instantaneously in <strong>Settings &rarr; Privacy, Security &amp; Legal</strong> and the Marcus Hub Memory view:</p>
+      <ul>
+        <li><strong>Right of Access &amp; Portability:</strong> View all stored conversation turns, intents, and knowledge entries in-app, and export <code>memory.csv</code>, <code>intents.json</code>, or <code>knowledge_bank.json</code> anytime.</li>
+        <li><strong>Right to Rectification &amp; Selective Erasure:</strong> Edit or delete any individual memory turn, note, face profile, intent, voice recording, or knowledge entry directly in-app.</li>
+        <li><strong>Right to Restrict Processing:</strong> Toggle <em>Record memory.csv Conversation Log</em> off at any time, or enable <em>100% Offline Privacy Mode</em>.</li>
+        <li><strong>Right to Erasure (&ldquo;Right to Be Forgotten&rdquo;):</strong> Tap <strong>Erase All Data</strong> in <em>Settings &rarr; Privacy, Security &amp; Legal</em> to wipe conversation logs (<code>memory.csv</code> / <code>sync_memory.csv</code>), Cerebellum Markov habit sequences, Lill-E emotional state, <code>knowledge_bank.json</code>, captured notification/message alerts, and enrolled face profiles in a single local operation. Notes, alarms, Voice Vault recordings, auto-read contacts, saved Hugging Face tokens, and custom wallpapers can also be cleared individually or by clearing app storage / uninstalling.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>5. Supervisory Authority &amp; Contact</h2>
+      <p>
+        If you have questions about how this app protects your data, email <a href="mailto:jackchrisfranklin@gmail.com">jackchrisfranklin@gmail.com</a>. UK users also retain the right to raise concerns with the Information Commissioner&rsquo;s Office (ICO) at <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer">ico.org.uk</a>.
+      </p>
+    </section>
+  </div>
+</body>
+</html>
