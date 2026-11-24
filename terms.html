@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — Marcus AI: Home Launcher</title>
+  <meta name="description" content="Terms of Service for Marcus AI: Home Launcher (v0.2.35 / Build 55) and Marcus Pro subscriptions." />
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #030914;
+      --surface: #0b1322;
+      --elevated: #111c32;
+      --border: #1e2d4a;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+      background: radial-gradient(circle at top center, #0c1b36 0%, var(--bg) 55%);
+      color: var(--text);
+      line-height: 1.68;
+      padding: 24px 16px 64px;
+    }
+    .wrap { max-width: 840px; margin: 0 auto; }
+    nav { margin-bottom: 16px; font-size: 13px; color: var(--muted); }
+    nav a { color: var(--accent); text-decoration: none; margin-right: 14px; }
+    nav a:hover { text-decoration: underline; }
+    header, section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+    }
+    h1 { margin: 0 0 8px; font-size: 26px; }
+    h2 { margin: 0 0 10px; font-size: 18px; color: var(--accent); }
+    p, li { font-size: 14px; color: #cbd5e1; }
+    ul { margin: 8px 0 0; padding-left: 20px; }
+    li + li { margin-top: 6px; }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+      background: var(--elevated);
+      padding: 2px 6px;
+      border-radius: 6px;
+      color: #7dd3fc;
+    }
+    .meta { margin: 0; font-size: 13px; color: var(--muted); }
+    a { color: var(--accent); }
+    footer {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a href="./index.html">&larr; Legal Center</a>
+      <a href="./privacy.html">Privacy Policy</a>
+      <a href="./data-protection.html">Data Protection</a>
+      <a href="./permissions.html">Permissions</a>
+      <a href="./support.html">Support</a>
+    </nav>
+
+    <header>
+      <h1>Terms of Service</h1>
+      <p class="meta">
+        <strong>Marcus AI: Home Launcher</strong> (<code>Marcus-2</code>) &middot; v0.2.35 (Build 55) &middot; Package <code>com.jchristopherfranklin.marcus</code><br />
+        Developer: <strong>Jack Chris Franklin</strong> (<a href="mailto:jackchrisfranklin@gmail.com">jackchrisfranklin@gmail.com</a>) &middot; Effective Date: <strong>November 2026</strong>
+      </p>
+    </header>
+
+    <section>
+      <h2>1. Acceptance &amp; Licence</h2>
+      <p>
+        By installing or using <strong>Marcus AI: Home Launcher</strong>, you agree to these Terms of Service and our <a href="./privacy.html">Privacy Policy</a>. You are granted a personal, non-exclusive, non-transferable, revocable licence to run the application on compatible Android devices you own or control.
+      </p>
+    </section>
+
+    <section>
+      <h2>2. Free Core Launcher &amp; Marcus Pro Subscriptions</h2>
+      <p>
+        The core home launcher, default assistant identity (<em>Marcus</em>), standard honorifics (<em>Boss</em>, <em>Sir</em>, <em>Commander</em>), built-in voice commands, local LLM/Piper inference, alarms, timers, notes, and basic audio playback are available at no cost. Optional <strong>Marcus Pro</strong> unlocks advanced customization, automation, voice call screening/callbacks, wallpaper sync, and full media playlist/loop/shuffle controls.
+      </p>
+      <ul>
+        <li><strong>Available Plans:</strong> Marcus Pro is offered via Google Play Billing (managed with RevenueCat) as an auto-renewing <strong>Yearly</strong> subscription (with a free trial where indicated on the purchase screen), an auto-renewing <strong>Monthly</strong> subscription, or a one-time <strong>Lifetime</strong> purchase. Live localized prices are displayed on the paywall prior to confirmation.</li>
+        <li><strong>Billing &amp; Auto-Renewal:</strong> Payment is charged to your Google Play account upon purchase confirmation (or at the end of any free trial period unless cancelled beforehand). Yearly and Monthly subscriptions automatically renew unless cancelled at least 24 hours before the end of the current billing period.</li>
+        <li><strong>Managing or Cancelling:</strong> You can manage, switch plans, restore purchases, or cancel subscriptions anytime in <em>Settings &rarr; Apps &amp; Support &rarr; Manage Subscription (Customer Center)</em> or directly inside the <strong>Google Play Store &rarr; Payments &amp; subscriptions</strong>.</li>
+        <li><strong>Expiration &amp; Fallback:</strong> If a subscription expires or is cancelled, previously saved Pro customizations remain stored locally on your device while features revert to Free defaults until Pro is renewed or restored.</li>
+        <li><strong>Refunds:</strong> All purchases and refunds are governed by <a href="https://support.google.com/googleplay/answer/2479637" target="_blank" rel="noopener noreferrer">Google Play&rsquo;s Refund Policy</a>.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. On-Device AI Output &amp; Hardware Safety</h2>
+      <ul>
+        <li><strong>Local AI Accuracy:</strong> Optional on-device language models (LiteRT-LM) generate responses locally on your device&rsquo;s CPU/GPU/NPU and may occasionally produce inaccurate or incomplete output. Always verify critical actions, reminders, calls, messages, or factual details.</li>
+        <li><strong>Hardware Protection Floor:</strong> To help prevent thermal throttling or out-of-memory crashes on constrained hardware, models exceeding your device&rsquo;s available RAM or falling below the 8 tokens/second stability floor may be restricted or automatically unloaded in favour of Ultra Eco Intent Mode.</li>
+        <li><strong>Not for Emergency Use:</strong> Never rely on voice commands, call screening, automated callbacks, or low-battery alerts for emergency, medical, or life-safety situations.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Open-Source Models, Voices &amp; User Plugins</h2>
+      <ul>
+        <li><strong>Third-Party Models &amp; Voices:</strong> Optional AI model weights (such as Gemma and Qwen) and Piper-TTS ONNX voices downloaded at your request or imported from your storage remain subject to their respective upstream licences. You are responsible for ensuring you have rights to any custom voice files, wallpapers, or audio you import.</li>
+        <li><strong>User-Authored Plugins:</strong> Scripts or extensions you write or import in <em>Settings &rarr; Plugins &amp; Extensions</em> run locally under permissions you configure. You are solely responsible for plugins you create, import, or enable.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>5. Acceptable Use, Disclaimers &amp; Limitation of Liability</h2>
+      <p>
+        You agree not to reverse-engineer billing checks, redistribute paid entitlements unlawfully, or use automated call/messaging features in violation of applicable telecommunications or spam laws. To the maximum extent permitted by applicable law (including the laws of England and Wales where applicable, without limiting mandatory consumer rights), Marcus AI: Home Launcher is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo; without warranties of uninterrupted operation, and the developer is not liable for indirect, incidental, or consequential damages arising from local device configuration or third-party service outages.
+      </p>
+    </section>
+
+    <section>
+      <h2>6. Changes &amp; Contact</h2>
+      <p>
+        We may update these Terms from time to time; the latest version is published at this URL. Questions or support requests may be sent to <strong>Jack Chris Franklin</strong> at <a href="mailto:jackchrisfranklin@gmail.com">jackchrisfranklin@gmail.com</a>.
+      </p>
+    </section>
+
+    <footer>
+      <p>
+        &copy; Jack Chris Franklin &middot; <a href="./privacy.html">Privacy Policy</a> &middot; <a href="mailto:jackchrisfranklin@gmail.com">jackchrisfranklin@gmail.com</a>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
