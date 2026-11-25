@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Android Permissions Disclosure — Marcus AI: Home Launcher</title>
-  <meta name="description" content="Complete breakdown of AndroidManifest.xml permissions used by Marcus AI: Home Launcher v0.2.4." />
+  <meta name="description" content="Complete breakdown of AndroidManifest.xml permissions used by Marcus AI: Home Launcher v0.2.39." />
   <style>
     :root {
       color-scheme: dark;
@@ -48,7 +48,7 @@
       color: #7dd3fc;
     }
     .meta { margin: 0; font-size: 13px; color: var(--muted); }
-    .removed {
+    .highlight {
       border-color: rgba(52, 211, 153, 0.35);
       background: rgba(52, 211, 153, 0.06);
     }
@@ -78,21 +78,21 @@
     </nav>
 
     <header>
-      <h1>Android Permissions Disclosure (v0.2.4)</h1>
+      <h1>Android Permissions Disclosure (v0.2.39)</h1>
       <p class="meta">
-        Exact permission list matching <code>AndroidManifest.xml</code> in Build 28 (Marcus Beta 4 / Marcus-2 4).
+        Exact permission list matching <code>AndroidManifest.xml</code> in Build 59 (<code>com.jchristopherfranklin.marcus</code>).
       </p>
     </header>
 
-    <section class="removed">
-      <h2>Permissions Excluded in v0.2.4</h2>
+    <section class="highlight">
+      <h2>Permissions Intentionally Omitted for Privacy</h2>
       <p>
-        To keep user privacy minimal and avoid unnecessary broad media or wireless privileges, v0.2.4 removes the Photo Gallery page, Video Gallery page, and Bluetooth peer pairing/announcements completely:
+        Marcus AI: Home Launcher strictly avoids SMS inbox permissions and background ad/location tracking:
       </p>
       <ul>
-        <li><code>READ_MEDIA_IMAGES</code> &mdash; <strong>Removed</strong> (not requested)</li>
-        <li><code>READ_MEDIA_VIDEO</code> &mdash; <strong>Removed</strong> (not requested)</li>
-        <li><code>BLUETOOTH</code> &amp; <code>BLUETOOTH_CONNECT</code> &mdash; <strong>Removed</strong> (not requested)</li>
+        <li><code>READ_SMS</code> &amp; <code>RECEIVE_SMS</code> &mdash; <strong>Not declared</strong> (optional notification listener covers allowlisted alerts in memory).</li>
+        <li><code>ACCESS_BACKGROUND_LOCATION</code> &mdash; <strong>Not declared</strong> (weather GPS only runs when explicitly enabled while using the app).</li>
+        <li><code>BLUETOOTH_SCAN</code> carries <code>android:usesPermissionFlags="neverForLocation"</code> &mdash; never used for location inference.</li>
       </ul>
     </section>
 
@@ -102,7 +102,7 @@
         <thead>
           <tr>
             <th>Permission</th>
-            <th>Required?</th>
+            <th>Scope</th>
             <th>Exact Feature Purpose</th>
           </tr>
         </thead>
@@ -115,12 +115,12 @@
           <tr>
             <td><code>SET_WALLPAPER</code><br /><code>SET_WALLPAPER_HINTS</code></td>
             <td>Optional Action</td>
-            <td>Syncs your chosen space backdrop or a custom image selected via Android&rsquo;s Photo Picker (no broad media-image permission required) to the Android home/lock screen when wallpaper sync is enabled in Settings.</td>
+            <td>Syncs your chosen space backdrop or a custom image selected via Android&rsquo;s document picker to the Android home/lock screen when wallpaper sync is enabled in Settings.</td>
           </tr>
           <tr>
             <td><code>INTERNET</code><br /><code>ACCESS_NETWORK_STATE</code></td>
-            <td>Optional / Blocked in Offline Mode</td>
-            <td>Used only when 100% Offline Privacy Mode is OFF (or when you manually download an AI model/voice, run a web search, or refresh weather).</td>
+            <td>Blocked in Offline Mode</td>
+            <td>Used only when 100% Offline Privacy Mode is OFF (or when you explicitly initiate model/voice downloads, Direct Chat web search, Play billing verification, or weather refresh).</td>
           </tr>
           <tr>
             <td><code>SET_ALARM</code></td>
@@ -130,7 +130,7 @@
           <tr>
             <td><code>FOREGROUND_SERVICE</code><br /><code>FOREGROUND_SERVICE_MICROPHONE</code><br /><code>FOREGROUND_SERVICE_MEDIA_PLAYBACK</code><br /><code>WAKE_LOCK</code></td>
             <td>Active Service Only</td>
-            <td>Keeps background local audio playback smooth and supports active user-triggered microphone voice capture or local recording without stalling.</td>
+            <td>Keeps background local audio/PiP playback smooth and supports active user-triggered microphone voice capture or local recording without stalling.</td>
           </tr>
         </tbody>
       </table>
@@ -149,18 +149,28 @@
         <tbody>
           <tr>
             <td><code>RECORD_AUDIO</code></td>
-            <td>On Voice / Recorder Tap</td>
-            <td>Used for on-device speech recognition, optional wake-word listening, and the local Voice Vault audio recorder.</td>
+            <td>On Voice / Mic Tap</td>
+            <td>Used for on-device speech recognition, Direct LLM Chat voice input, optional wake-word listening, and the local Voice Vault audio recorder.</td>
+          </tr>
+          <tr>
+            <td><code>READ_MEDIA_IMAGES</code> (Android 13+)<br /><code>READ_MEDIA_VIDEO</code> (Android 13+)</td>
+            <td>On HUD Gallery Scan</td>
+            <td>Displays local photos and paused video thumbnails inside the built-in HUD Gallery page with strict zero autoplay and on-device Private/Archive organization. Also supports importing via Storage Access Framework and hand-off to Android&rsquo;s system gallery via <code>ACTION_VIEW</code>.</td>
           </tr>
           <tr>
             <td><code>READ_MEDIA_AUDIO</code> (Android 13+)<br /><code>READ_EXTERNAL_STORAGE</code> (<code>maxSdkVersion="32"</code>)</td>
-            <td>On Media Audio Scan</td>
-            <td>Used strictly to scan and play your local music/audio files in the Media Player page. Images and videos are not scanned.</td>
+            <td>On Media Scan</td>
+            <td>Used to scan and play your local music/audio files in the Media Player page (and visual media on Android 12 and below).</td>
+          </tr>
+          <tr>
+            <td><code>BLUETOOTH_CONNECT</code><br /><code>BLUETOOTH_SCAN</code> (<code>neverForLocation</code>)<br /><code>BLUETOOTH</code> / <code>BLUETOOTH_ADMIN</code> (<code>maxSdkVersion="30"</code>)</td>
+            <td>On Bluetooth Command</td>
+            <td>Used only when you ask Marcus to connect or search for hands-free Bluetooth audio devices (speakers/headsets). Never used to derive location.</td>
           </tr>
           <tr>
             <td><code>CAMERA</code> (optional hardware)</td>
             <td>OFF by default</td>
-            <td>Requested only if you opt into On-Device Face Recognition Security in Settings and enroll/verify a face profile.</td>
+            <td>Requested only if you opt into On-Device Face Recognition Security in Settings and enroll/verify a face profile or unlock the HUD Gallery Private Folder via Face Recognition.</td>
           </tr>
           <tr>
             <td><code>ACCESS_COARSE_LOCATION</code><br /><code>ACCESS_FINE_LOCATION</code></td>
