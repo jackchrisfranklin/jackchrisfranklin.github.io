@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Support &amp; Help — Marcus AI: Home Launcher</title>
-  <meta name="description" content="Support guide, hardware minimum specs, and tester contact for Marcus AI: Home Launcher v0.2.4." />
+  <meta name="description" content="Support guide, hardware minimum specs, and user help for Marcus AI: Home Launcher v0.2.39." />
   <style>
     :root {
       color-scheme: dark;
@@ -38,6 +38,7 @@
     h1 { margin: 0 0 8px; font-size: 26px; }
     h2 { margin: 0 0 10px; font-size: 18px; color: var(--accent); }
     p, li { font-size: 14px; color: #cbd5e1; }
+    li + li { margin-top: 8px; }
     code {
       font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
       font-size: 12px;
@@ -63,22 +64,27 @@
     <header>
       <h1>Support &amp; Troubleshooting</h1>
       <p class="meta">
-        Marcus AI: Home Launcher v0.2.4 (Marcus Beta 4 / Marcus-2 4, Build 28) &middot; Developer: <strong>Jack Chris Franklin</strong>
+        Marcus AI: Home Launcher v0.2.39 (<code>Marcus-2</code>, Build 59) &middot; Developer: <strong>Jack Chris Franklin</strong>
       </p>
     </header>
 
     <section>
       <h2>Direct Support Contact</h2>
       <p>
-        Need help, want to share Closed Testing feedback, or need to report a crash? Email <a href="mailto:jackchrisfranklin@gmail.com">jackchrisfranklin@gmail.com</a> with your Android device model and OS version.
+        Need help, want to share feedback, report a crash, or inquire about a Marcus Pro purchase? Email <a href="mailto:jackchrisfranklin@gmail.com">jackchrisfranklin@gmail.com</a> with your Android device model and OS version, or tap <em>Send Anonymous Bug Report</em> inside <em>Settings &rarr; Apps &amp; Support</em>.
       </p>
     </section>
 
     <section>
-      <h2>Quick Answers for Beta Testers</h2>
+      <h2>Quick Answers &amp; Launcher Navigation</h2>
       <ul>
-        <li><strong>Where did AI, Wallpaper, Battery Alerts &amp; Search settings go?</strong> Everything is unified inside the single <strong>Settings</strong> applet with Android-style categories (<em>Assistant &amp; Voice</em>, <em>On-Device AI (Gemma 4)</em>, <em>Wallpaper, Display &amp; Home</em>, <em>Battery, Weather &amp; Search</em>, <em>Calls, Messages &amp; Volume</em>, <em>Privacy, Security &amp; Legal</em>, <em>Apps &amp; Support</em>).</li>
-        <li><strong>Why does a Gemma 4 model show &ldquo;Blocked / Ultra Eco Intent Mode&rdquo;?</strong> Lower-RAM or 32-bit devices or models running under the 8 tokens/second floor automatically protect device stability by keeping you on instant zero-RAM Ultra Eco intent routing.</li>
+        <li><strong>Why don&rsquo;t live Weather or Direct Chat Web Search connect on first launch?</strong> <em>100% Offline Privacy Mode</em> is ON by default to protect your privacy. During <strong>Guided Setup (Step 1)</strong>&mdash;or anytime in <em>Settings &rarr; Privacy, Security &amp; Legal</em>&mdash;toggle <strong>Online Mode ON</strong> if you want live weather forecasts, web search, or model downloads.</li>
+        <li><strong>How are the Home Launcher pages arranged?</strong> Swipe horizontally across 4 pages: <strong>Direct Chat</strong> (left) &middot; <strong>Home</strong> (center default) &middot; <strong>Media</strong> (right 1) &middot; <strong>HUD Gallery</strong> (right 2).</li>
+        <li><strong>How does Direct LLM Chat handle web searches and the Knowledge Bank?</strong> Direct Chat uses a fast regex search-intent classifier (recognizing commands like <em>&ldquo;search the web for&hellip;&rdquo;</em> or <em>&ldquo;look up&hellip;&rdquo;</em>), checks your offline <code>knowledge_bank.json</code> first, reads <code>memory.csv</code> read-only for context, and&mdash;when Online Mode is enabled&mdash;fetches web snippets cleanly without getting stuck in an offline uncertainty loop, auto-saving PII-filtered facts to your Knowledge Bank.</li>
+        <li><strong>How does the HUD Gallery handle videos, PiP, and forgotten Private PINs?</strong> Videos never autoplay while browsing or opening and stop cleanly on exit or screen lock unless you tap <strong>PiP</strong>. Drag the concentric rotary dial to step items (or scrub videos / zoom photos when maximized), or tap <em>System Gallery</em> to open the active file in Android&rsquo;s built-in viewer. If you forget your Private Folder PIN, tap <strong>Forgot PIN? Use System Lockscreen PIN</strong> to verify via Android&rsquo;s native device lockscreen and reset access.</li>
+        <li><strong>What does &ldquo;UK GDPR Erase All Data&rdquo; remove?</strong> It permanently clears <code>memory.csv</code>, Cerebellum habits, <code>knowledge_bank.json</code>, custom plugins, Direct Chat threads, Private Gallery Vault media &amp; PIN, Voice Vault recordings, notes, alarms, reminders, custom wallpaper, Hugging Face token, captured notifications, and enrolled face profiles from the device.</li>
+        <li><strong>Where do I switch between Marcus ASCII &amp; Circular Sci-Fi Core?</strong> Open <em>Settings &rarr; Assistant &amp; Voice &rarr; Emoticon Customisation</em> (also selectable in Guided Setup).</li>
+        <li><strong>Why does an AI model show &ldquo;Blocked / Ultra Eco Intent Mode&rdquo;?</strong> Lower-RAM or 32-bit devices or models running under the 8 tokens/second floor automatically protect device stability by keeping you on instant zero-RAM Ultra Eco intent routing.</li>
         <li><strong>How do I set Marcus as my default Home screen?</strong> Open <em>Settings &rarr; Apps &amp; Support &rarr; Set Marcus as Home Launcher</em> and choose Marcus in Android&rsquo;s Default Home App menu.</li>
         <li><strong>How do I rearrange Home screen widgets or Drawer apps?</strong> Long-press empty space on Home (or tap <em>Edit Home</em> in Settings) to reorder Home widgets and drag Marcus/system apps inside the App Drawer.</li>
       </ul>

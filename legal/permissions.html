@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Android Permissions Disclosure — Marcus AI: Home Launcher</title>
-  <meta name="description" content="Complete breakdown of AndroidManifest.xml permissions used by Marcus AI: Home Launcher v0.2.4." />
+  <meta name="description" content="Complete breakdown of AndroidManifest.xml permissions, hardware features, foreground services, and system integrations used by Marcus AI: Home Launcher v0.2.39." />
   <style>
     :root {
       color-scheme: dark;
@@ -26,7 +26,7 @@
       line-height: 1.65;
       padding: 24px 16px 64px;
     }
-    .wrap { max-width: 820px; margin: 0 auto; }
+    .wrap { max-width: 840px; margin: 0 auto; }
     nav { margin-bottom: 16px; font-size: 13px; color: var(--muted); }
     nav a { color: var(--accent); text-decoration: none; margin-right: 12px; }
     header, section {
@@ -39,6 +39,8 @@
     h1 { margin: 0 0 8px; font-size: 26px; }
     h2 { margin: 0 0 10px; font-size: 18px; color: var(--accent); }
     p, li { font-size: 14px; color: #cbd5e1; }
+    ul { margin: 8px 0 0; padding-left: 20px; }
+    li + li { margin-top: 6px; }
     code {
       font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
       font-size: 12px;
@@ -48,7 +50,7 @@
       color: #7dd3fc;
     }
     .meta { margin: 0; font-size: 13px; color: var(--muted); }
-    .removed {
+    .highlight {
       border-color: rgba(52, 211, 153, 0.35);
       background: rgba(52, 211, 153, 0.06);
     }
@@ -78,109 +80,160 @@
     </nav>
 
     <header>
-      <h1>Android Permissions Disclosure (v0.2.4)</h1>
+      <h1>Android Permissions &amp; System Capabilities Disclosure (v0.2.39)</h1>
       <p class="meta">
-        Exact permission list matching <code>AndroidManifest.xml</code> in Build 28 (Marcus Beta 4 / Marcus-2 4).
+        Exact breakdown matching every declared permission, optional hardware feature, foreground service, intent query, and Picture-in-Picture / lockscreen integration in <code>AndroidManifest.xml</code> (Build 59, <code>com.jchristopherfranklin.marcus</code>).
       </p>
     </header>
 
-    <section class="removed">
-      <h2>Permissions Excluded in v0.2.4</h2>
+    <section class="highlight">
+      <h2>Permissions Intentionally Omitted for Privacy</h2>
       <p>
-        To keep user privacy minimal and avoid unnecessary broad media or wireless privileges, v0.2.4 removes the Photo Gallery page, Video Gallery page, and Bluetooth peer pairing/announcements completely:
+        Marcus AI: Home Launcher avoids sensitive inbox, call-log, and background tracking permissions:
       </p>
       <ul>
-        <li><code>READ_MEDIA_IMAGES</code> &mdash; <strong>Removed</strong> (not requested)</li>
-        <li><code>READ_MEDIA_VIDEO</code> &mdash; <strong>Removed</strong> (not requested)</li>
-        <li><code>BLUETOOTH</code> &amp; <code>BLUETOOTH_CONNECT</code> &mdash; <strong>Removed</strong> (not requested)</li>
+        <li><code>READ_SMS</code>, <code>RECEIVE_SMS</code> &amp; <code>READ_CALL_LOG</code> &mdash; <strong>Not declared</strong> (optional notification listener covers allowlisted alerts strictly in memory).</li>
+        <li><code>ACCESS_BACKGROUND_LOCATION</code> &mdash; <strong>Not declared</strong> (optional weather GPS only updates while the app is open and Offline Mode is disabled).</li>
+        <li><code>BLUETOOTH_SCAN</code> declares <code>android:usesPermissionFlags="neverForLocation"</code> &mdash; used strictly to find audio accessories, never for geolocation.</li>
+        <li>All hardware sensors (<code>camera.front</code>, <code>camera.flash</code>) declare <code>android:required="false"</code> so tablets and devices without them remain fully supported.</li>
       </ul>
     </section>
 
     <section>
-      <h2>Core Launcher &amp; System Permissions</h2>
+      <h2>1. HUD Gallery, Video Player &amp; Media Playback Permissions</h2>
       <table>
         <thead>
           <tr>
-            <th>Permission</th>
-            <th>Required?</th>
-            <th>Exact Feature Purpose</th>
+            <th>Permission / Component</th>
+            <th>Default State</th>
+            <th>Exact Feature Justification</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><code>QUERY_ALL_PACKAGES</code><br /><code>REQUEST_DELETE_PACKAGES</code></td>
-            <td>Home Launcher Core</td>
-            <td>Declared solely because Marcus registers as an Android <code>CATEGORY_HOME</code> Home Launcher so the App Drawer can list, launch, hide, search, inspect, and uninstall your installed apps on your command. App inventory never leaves the device.</td>
+            <td><code>READ_MEDIA_IMAGES</code> (API 33+)<br /><code>READ_MEDIA_VIDEO</code> (API 33+)</td>
+            <td>Runtime opt-in</td>
+            <td>Powers the built-in <strong>HUD Gallery</strong> page (hero preview stage, static bottom filmstrip, paused video keyframe previews, thumb-friendly rotary stepping/scrubbing/zoom dial, full-screen viewer, Archive folder, and moving chosen items into the locked Private Folder). Enforces <strong>strict zero autoplay</strong> on browse or open.</td>
           </tr>
           <tr>
-            <td><code>SET_WALLPAPER</code><br /><code>SET_WALLPAPER_HINTS</code></td>
-            <td>Optional Action</td>
-            <td>Syncs your chosen space backdrop or a custom image selected via Android&rsquo;s Photo Picker (no broad media-image permission required) to the Android home/lock screen when wallpaper sync is enabled in Settings.</td>
+            <td><code>READ_MEDIA_AUDIO</code> (API 33+)</td>
+            <td>Runtime opt-in</td>
+            <td>Powers the built-in offline <strong>Audio &amp; Media Player</strong> page for indexing local music/audio tracks, managing local folders and playlists, 5-band Equalizer presets, A&ndash;B loop points, and sleep timer playback.</td>
           </tr>
           <tr>
-            <td><code>INTERNET</code><br /><code>ACCESS_NETWORK_STATE</code></td>
-            <td>Optional / Blocked in Offline Mode</td>
-            <td>Used only when 100% Offline Privacy Mode is OFF (or when you manually download an AI model/voice, run a web search, or refresh weather).</td>
+            <td><code>READ_EXTERNAL_STORAGE</code> (<code>maxSdkVersion="32"</code>)</td>
+            <td>Runtime opt-in (Android 12 &amp; lower)</td>
+            <td>Provides scoped read access on Android 12 and older devices for the same local HUD Gallery and Audio Player features; automatically unused on Android 13+.</td>
           </tr>
           <tr>
-            <td><code>SET_ALARM</code></td>
-            <td>User Command</td>
-            <td>Hands off alarms created by voice or the Clock applet to Android&rsquo;s built-in Clock app.</td>
+            <td><code>FOREGROUND_SERVICE</code><br /><code>FOREGROUND_SERVICE_MEDIA_PLAYBACK</code><br /><code>WAKE_LOCK</code></td>
+            <td>Active Media3 playback only</td>
+            <td>Required by Android 14+ to run <code>MediaPlaybackService</code> cleanly with lockscreen/notification media controls when listening to local audio tracks without premature OS termination.</td>
           </tr>
           <tr>
-            <td><code>FOREGROUND_SERVICE</code><br /><code>FOREGROUND_SERVICE_MICROPHONE</code><br /><code>FOREGROUND_SERVICE_MEDIA_PLAYBACK</code><br /><code>WAKE_LOCK</code></td>
-            <td>Active Service Only</td>
-            <td>Keeps background local audio playback smooth and supports active user-triggered microphone voice capture or local recording without stalling.</td>
+            <td>Picture-in-Picture (<code>supportsPictureInPicture="true"</code>)<br />&amp; <code>FileProvider</code> (<code>ACTION_VIEW</code>)</td>
+            <td>Explicit user tap only</td>
+            <td>Allows a user-tapped <strong>PiP</strong> button to float active Media Player or HUD Gallery video cleanly (otherwise all Gallery video stops immediately on exit or screen lock). <code>FileProvider</code> grants temporary scoped read access when the user taps <em>Open in System Gallery</em> or shares an item with Android&rsquo;s built-in viewer.</td>
+          </tr>
+          <tr>
+            <td>Storage Access Framework (<code>OpenMultipleDocuments</code> / <code>OpenDocumentTree</code>)</td>
+            <td>Explicit file picker</td>
+            <td>Lets users import individual photos, videos, audio folders, custom wallpaper, AI models, or Piper voices without broad filesystem access.</td>
           </tr>
         </tbody>
       </table>
     </section>
 
     <section>
-      <h2>Runtime Permissions (Prompted Only When Used)</h2>
+      <h2>2. Home Launcher, Wallpaper, Alarms &amp; Package Visibility</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Permission / Declaration</th>
+            <th>Scope</th>
+            <th>Exact Feature Justification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>QUERY_ALL_PACKAGES</code><br /><code>REQUEST_DELETE_PACKAGES</code></td>
+            <td>Core Home Launcher (<code>CATEGORY_HOME</code>)</td>
+            <td>Essential for any Android Home Screen replacement: enumerates installed apps in the App Drawer, launches them, supports long-press Hide/Disable/App-Info, and invokes Android&rsquo;s OS uninstall confirmation dialog when requested by the user. No app list ever leaves the device.</td>
+          </tr>
+          <tr>
+            <td><code>SET_WALLPAPER</code><br /><code>SET_WALLPAPER_HINTS</code></td>
+            <td>Optional user toggle</td>
+            <td>Applies Marcus&rsquo;s built-in space themes or a user-selected custom wallpaper (<code>WallpaperManager</code>) to Android&rsquo;s Home and/or Lock screen when enabled in Settings.</td>
+          </tr>
+          <tr>
+            <td><code>SET_ALARM</code></td>
+            <td>User command / Clock applet</td>
+            <td>Delegates user-created alarms and countdown timers to Android&rsquo;s native Clock application via <code>ACTION_SET_ALARM</code> / <code>ACTION_SET_TIMER</code>.</td>
+          </tr>
+          <tr>
+            <td>Manifest <code>&lt;queries&gt;</code> intents</td>
+            <td>Targeted OS hand-off</td>
+            <td>Declares visibility to Android&rsquo;s built-in launcher apps, Bluetooth enable/settings, SpeechRecognizer &amp; TTS engines, Clock/Timer/Camera apps, default HTTPS browser (<code>WEB_SEARCH</code> / <code>VIEW</code>), image/video viewers for System Gallery hand-off, and email client (<code>mailto:</code>) for anonymous bug reports.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>3. Voice, Microphone, Camera, Location, Contacts, Bluetooth &amp; Network</h2>
       <table>
         <thead>
           <tr>
             <th>Permission</th>
             <th>Default State</th>
-            <th>Exact Feature Purpose</th>
+            <th>Exact Feature Justification</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><code>RECORD_AUDIO</code></td>
-            <td>On Voice / Recorder Tap</td>
-            <td>Used for on-device speech recognition, optional wake-word listening, and the local Voice Vault audio recorder.</td>
+            <td><code>RECORD_AUDIO</code><br /><code>FOREGROUND_SERVICE_MICROPHONE</code></td>
+            <td>Runtime tap / opt-in</td>
+            <td>Used when you tap the Home mic, hold to speak, dictate inside Direct LLM Chat, enable hands-free Wake Word listening, or start a local recording inside the <strong>Voice Notes Recorder</strong> (<code>VoiceNotesRecorderService</code> shows a persistent OS recording indicator).</td>
           </tr>
           <tr>
-            <td><code>READ_MEDIA_AUDIO</code> (Android 13+)<br /><code>READ_EXTERNAL_STORAGE</code> (<code>maxSdkVersion="32"</code>)</td>
-            <td>On Media Audio Scan</td>
-            <td>Used strictly to scan and play your local music/audio files in the Media Player page. Images and videos are not scanned.</td>
-          </tr>
-          <tr>
-            <td><code>CAMERA</code> (optional hardware)</td>
+            <td><code>CAMERA</code><br />(<code>hardware.camera.front</code> &amp; <code>camera.flash</code>, <code>required="false"</code>)</td>
             <td>OFF by default</td>
-            <td>Requested only if you opt into On-Device Face Recognition Security in Settings and enroll/verify a face profile.</td>
+            <td>Requests camera access only if you opt into On-Device Face Recognition Security (enroll/verify profiles or unlock the HUD Gallery Private Folder by face) or toggle the hardware flashlight LED via voice/command (<code>CameraManager.setTorchMode</code>).</td>
+          </tr>
+          <tr>
+            <td>Android <code>KeyguardManager</code> Credential Prompt (<code>createConfirmDeviceCredentialIntent</code>)</td>
+            <td>No extra permission needed</td>
+            <td>If you forget your HUD Gallery Private Folder PIN, tapping <em>Forgot PIN? Use System Lockscreen PIN</em> delegates verification to Android&rsquo;s secure system lockscreen; Marcus receives only success/failure to reset the vault lock.</td>
           </tr>
           <tr>
             <td><code>ACCESS_COARSE_LOCATION</code><br /><code>ACCESS_FINE_LOCATION</code></td>
             <td>OFF by default</td>
-            <td>Requested only if you turn on Automatic GPS Location Updates in Weather Settings. Manual city lookup requires no location permission.</td>
+            <td>Disabled on install (manual city search is default). Only requested if you turn on Automatic GPS Location Updates in Weather Settings while Offline Mode is off.</td>
           </tr>
           <tr>
             <td><code>READ_CONTACTS</code></td>
             <td>Optional</td>
-            <td>Used strictly locally to resolve contact names when matching auto-read contacts or launching call/message intents by name.</td>
-          </tr>
-          <tr>
-            <td><code>POST_NOTIFICATIONS</code></td>
-            <td>Optional (Android 13+)</td>
-            <td>Displays local low-battery alerts, active media playback controls, timer reminders, and voice service notifications.</td>
+            <td>Matches contact names locally for Auto-Read Contacts notification alerts and launching phone/message intents by voice name.</td>
           </tr>
           <tr>
             <td><code>BIND_NOTIFICATION_LISTENER_SERVICE</code></td>
-            <td>OFF by default (System Opt-in)</td>
-            <td>Optional Android system setting enabling external music player controls and optional hands-free incoming call/message reading for allowlisted contacts.</td>
+            <td>OFF (OS system toggle)</td>
+            <td>Powers <code>MarcusNotificationListener</code> locally to show external media controls on the Media Player page, summarize active notifications on command, announce incoming callers, and read messages strictly from allowlisted contacts.</td>
+          </tr>
+          <tr>
+            <td><code>BLUETOOTH_CONNECT</code><br /><code>BLUETOOTH_SCAN</code> (<code>neverForLocation</code>)<br /><code>BLUETOOTH</code> / <code>BLUETOOTH_ADMIN</code> (API &le; 30)</td>
+            <td>On Bluetooth voice/UI action</td>
+            <td>Allows hands-free discovery, pairing queries, and audio connection prompts for Bluetooth headphones and speakers.</td>
+          </tr>
+          <tr>
+            <td><code>POST_NOTIFICATIONS</code></td>
+            <td>Optional (API 33+)</td>
+            <td>Shows low-battery alerts, active audio controls, voice recording indicators, and local timer/reminder notifications.</td>
+          </tr>
+          <tr>
+            <td><code>INTERNET</code><br /><code>ACCESS_NETWORK_STATE</code></td>
+            <td>Blocked in 100% Offline Mode</td>
+            <td>Used strictly when 100% Offline Privacy Mode is OFF (recommended in Guided Setup Step 1 for live Weather and Direct Chat Web Search) or when downloading Gemma/Qwen/Piper models from Hugging Face or verifying Google Play Pro subscriptions via RevenueCat.</td>
           </tr>
         </tbody>
       </table>

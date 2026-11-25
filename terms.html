@@ -99,18 +99,19 @@
     </section>
 
     <section>
-      <h2>3. On-Device AI Output &amp; Hardware Safety</h2>
+      <h2>3. On-Device AI Output, Direct Chat &amp; Hardware Safety</h2>
       <ul>
-        <li><strong>Local AI Accuracy:</strong> Optional on-device language models (LiteRT-LM) generate responses locally on your device&rsquo;s CPU/GPU/NPU and may occasionally produce inaccurate or incomplete output. Always verify critical actions, reminders, calls, messages, or factual details.</li>
+        <li><strong>Local AI &amp; Web Search Accuracy:</strong> Optional on-device language models (LiteRT-LM) generate responses locally on your device&rsquo;s CPU/GPU/NPU and may occasionally produce inaccurate or incomplete output. When Online Mode is enabled, Direct LLM Chat may supplement answers using public web snippets and save PII-filtered summaries to your local Knowledge Bank. Always verify critical actions, reminders, calls, messages, or factual details.</li>
         <li><strong>Hardware Protection Floor:</strong> To help prevent thermal throttling or out-of-memory crashes on constrained hardware, models exceeding your device&rsquo;s available RAM or falling below the 8 tokens/second stability floor may be restricted or automatically unloaded in favour of Ultra Eco Intent Mode.</li>
         <li><strong>Not for Emergency Use:</strong> Never rely on voice commands, call screening, automated callbacks, or low-battery alerts for emergency, medical, or life-safety situations.</li>
       </ul>
     </section>
 
     <section>
-      <h2>4. Open-Source Models, Voices &amp; User Plugins</h2>
+      <h2>4. Media, HUD Gallery, Third-Party Models &amp; User Plugins</h2>
       <ul>
-        <li><strong>Third-Party Models &amp; Voices:</strong> Optional AI model weights (such as Gemma and Qwen) and Piper-TTS ONNX voices downloaded at your request or imported from your storage remain subject to their respective upstream licences. You are responsible for ensuring you have rights to any custom voice files, wallpapers, or media you import.</li>
+        <li><strong>HUD Gallery &amp; Local Vault Responsibility:</strong> You are responsible for maintaining your Android device lockscreen PIN/biometrics (used by Android <code>KeyguardManager</code> if you ever need to reset a forgotten HUD Gallery Private Folder PIN) and backing up personal media before invoking full <strong>UK GDPR Erase All Data</strong>, which permanently wipes Private Folder copies and Voice Vault recordings.</li>
+        <li><strong>Third-Party Models &amp; Voices:</strong> Optional AI model weights (such as Gemma and Qwen) and Piper-TTS ONNX voices downloaded at your request or imported from your storage remain subject to their respective upstream licences. You are responsible for ensuring you have rights to any custom voice files, wallpapers, or media you import or open in Picture-in-Picture (PiP).</li>
         <li><strong>User-Authored Plugins:</strong> Scripts or extensions you write or import in <em>Settings &rarr; Plugins &amp; Extensions</em> run locally under permissions you configure. You are solely responsible for plugins you create, import, or enable.</li>
       </ul>
     </section>

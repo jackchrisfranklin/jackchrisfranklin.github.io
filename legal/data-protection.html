@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Data Protection &amp; UK GDPR — Marcus AI: Home Launcher</title>
-  <meta name="description" content="UK GDPR and on-device data protection technical notice for Marcus AI: Home Launcher v0.2.4." />
+  <meta name="description" content="UK GDPR and on-device data protection technical notice for Marcus AI: Home Launcher v0.2.39." />
   <style>
     :root {
       color-scheme: dark;
@@ -80,21 +80,21 @@
       <p class="meta">
         Controller: <strong>Jack Chris Franklin</strong> &middot;
         Contact: <a href="mailto:jackchrisfranklin@gmail.com">jackchrisfranklin@gmail.com</a><br />
-        Applies to: <strong>Marcus AI: Home Launcher</strong> v0.2.4 (<code>com.jchristopherfranklin.marcus</code>, Build 28)
+        Applies to: <strong>Marcus AI: Home Launcher</strong> v0.2.39 (<code>com.jchristopherfranklin.marcus</code>, Build 59)
       </p>
     </header>
 
     <section>
       <h2>1. Purpose &amp; Lawful Basis</h2>
       <p>
-        All personal data processed inside Marcus AI: Home Launcher remains strictly on your device to perform the launcher, voice assistant, note-taking, alarm, and media-playback functions you directly invoke (UK GDPR Article 6(1)(b) &mdash; performance of a requested service, and Article 6(1)(a) &mdash; explicit consent for optional camera face unlock, GPS weather, notification access, and voice memory logging).
+        All personal data processed inside Marcus AI: Home Launcher remains strictly on your device to perform the launcher, voice assistant, Direct LLM Chat, note-taking, alarm, media playback, and HUD Gallery functions you directly invoke (UK GDPR Article 6(1)(b) &mdash; performance of a requested service, and Article 6(1)(a) &mdash; explicit consent for optional camera face unlock, GPS weather, notification access, and voice memory logging).
       </p>
     </section>
 
     <section>
       <h2>2. On-Device Files &amp; Backup Exclusions</h2>
       <p>
-        In accordance with Android&rsquo;s <code>backup_rules.xml</code> and <code>data_extraction_rules.xml</code>, sensitive local SharedPreferences and private app files are excluded from Google cloud backups, and large downloaded model/audio directories are also excluded from device-to-device transfers:
+        In accordance with Android&rsquo;s <code>backup_rules.xml</code> and <code>data_extraction_rules.xml</code>, sensitive local SharedPreferences and private app files are excluded from Google cloud backups, and large downloaded model/audio and private gallery directories are also excluded from device-to-device transfers:
       </p>
       <table>
         <thead>
@@ -107,7 +107,7 @@
         <tbody>
           <tr>
             <td><code>marcus_mobile_prefs_v2.xml</code> (SharedPreferences)</td>
-            <td>Settings, notes, alarms, reminders, intents, optional face profiles, optional HF token</td>
+            <td>Settings, notes, alarms, reminders, intents, salted Private PIN hash, auto-read contacts, optional face profiles, optional Hugging Face token</td>
             <td>Excluded from cloud backup</td>
           </tr>
           <tr>
@@ -121,9 +121,19 @@
             <td>Excluded from cloud backup</td>
           </tr>
           <tr>
+            <td><code>files/direct_chat_sessions_v1.json</code></td>
+            <td>Standalone Direct LLM Chat conversation sessions &amp; web source citations</td>
+            <td>Excluded from cloud backup &amp; device transfer</td>
+          </tr>
+          <tr>
             <td><code>files/knowledge_bank.json</code></td>
             <td>Zero-PII offline public factual summaries</td>
             <td>Excluded from cloud backup</td>
+          </tr>
+          <tr>
+            <td><code>files/gallery_private</code> &amp; <code>files/gallery_vault_v1.json</code></td>
+            <td>User-secured Private Folder media copies plus Archive/Hidden/Vault index metadata</td>
+            <td>Excluded from cloud backup &amp; device transfer</td>
           </tr>
           <tr>
             <td><code>files/voice_vault</code></td>
@@ -152,7 +162,7 @@
     <section>
       <h2>3. Zero-PII Filtering in the Offline Knowledge Bank</h2>
       <p>
-        Before any web-search summary is written to <code>knowledge_bank.json</code>, <code>KnowledgeBankManager</code> strips any <code>https?://</code> URLs and <code>@handle</code> mentions and runs a strict two-stage check:
+        Before any public factual entry, Direct Chat web snippet summary, or plugin-contributed knowledge fact is written to <code>knowledge_bank.json</code>, <code>KnowledgeBankManager</code> strips any <code>https?://</code> URLs and <code>@handle</code> mentions and runs a strict two-stage check:
       </p>
       <ul>
         <li><strong>Deterministic Regex Blocker:</strong> Rejects entries containing your configured user name, email addresses, phone numbers, street addresses, UK postcodes, IPv4 addresses, API keys/tokens (such as <code>AIza...</code>, <code>hf_...</code>, <code>sk-...</code>, <code>ghp_...</code>, <code>Bearer</code>), 6+ consecutive digits, or personal query indicators (<code>my name is</code>, <code>my address</code>, <code>my phone</code>, <code>my password</code>, <code>my bank</code>, <code>my national insurance</code>, <code>my social security</code>, etc.).</li>
@@ -165,9 +175,9 @@
       <p>Because your data stays on your device, you exercise your data protection rights instantaneously in <strong>Settings &rarr; Privacy, Security &amp; Legal</strong> and the Marcus Hub Memory view:</p>
       <ul>
         <li><strong>Right of Access &amp; Portability:</strong> View all stored conversation turns, intents, and knowledge entries in-app, and export <code>memory.csv</code>, <code>intents.json</code>, or <code>knowledge_bank.json</code> anytime.</li>
-        <li><strong>Right to Rectification &amp; Selective Erasure:</strong> Edit or delete any individual memory turn, note, face profile, intent, voice recording, or knowledge entry directly in-app.</li>
-        <li><strong>Right to Restrict Processing:</strong> Toggle <em>Record memory.csv Conversation Log</em> off at any time, or enable <em>100% Offline Privacy Mode</em>.</li>
-        <li><strong>Right to Erasure (&ldquo;Right to Be Forgotten&rdquo;):</strong> Tap <strong>Erase All Data</strong> in <em>Settings &rarr; Privacy, Security &amp; Legal</em> to wipe conversation logs (<code>memory.csv</code> / <code>sync_memory.csv</code>), Cerebellum Markov habit sequences, Lill-E emotional state, <code>knowledge_bank.json</code>, captured notification/message alerts, and enrolled face profiles in a single local operation. Notes, alarms, Voice Vault recordings, auto-read contacts, saved Hugging Face tokens, and custom wallpapers can also be cleared individually or by clearing app storage / uninstalling.</li>
+        <li><strong>Right to Rectification &amp; Selective Erasure:</strong> Edit or delete any individual memory turn, Direct Chat session, Private Folder or imported Gallery item, note, face profile, intent, voice recording, or knowledge entry directly in-app.</li>
+        <li><strong>Right to Restrict Processing:</strong> Toggle <em>Record memory.csv Conversation Log</em> off at any time, or keep <em>100% Offline Privacy Mode</em> ON.</li>
+        <li><strong>Right to Erasure (&ldquo;Right to Be Forgotten&rdquo;):</strong> Tap <strong>Erase All Data</strong> in <em>Settings &rarr; Privacy, Security &amp; Legal</em> (or Marcus Memory Control) to permanently wipe conversation logs (<code>memory.csv</code> / <code>sync_memory.csv</code>), Cerebellum Markov habit sequences, Lill-E emotional state, <code>knowledge_bank.json</code>, custom plugins, Direct Chat sessions, Private Gallery Vault files &amp; salted PIN, Voice Vault M4A recordings, notes, alarms, reminders, custom wallpaper, Hugging Face token, auto-read contacts, captured notification/message alerts, and enrolled face profiles in a single local operation.</li>
       </ul>
     </section>
 
