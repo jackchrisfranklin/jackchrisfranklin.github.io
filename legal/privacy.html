@@ -1,194 +1,222 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy — Marcus AI: Home Launcher</title>
-  <meta name="description" content="Privacy Policy for Marcus AI: Home Launcher (v0.2.39 / Build 59), developed by Jack Chris Franklin." />
+  <meta name="description" content="Privacy Policy for Marcus AI: Home Launcher (v0.2.45 / Build 65), published by Jack Christopher Franklin under England and Wales law." />
   <style>
     :root {
-      color-scheme: dark;
-      --bg: #030914;
-      --surface: #0b1322;
-      --elevated: #111c32;
-      --border: #1e2d4a;
-      --text: #e2e8f0;
-      --muted: #94a3b8;
-      --accent: #38bdf8;
-      --emerald: #34d399;
+      --bg: #faf9f6;
+      --paper: #ffffff;
+      --wash: #f3f1ec;
+      --ink: #171a1f;
+      --muted: #575d68;
+      --rule: #d8d3c8;
+      --link: #1d4ed8;
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
-      background: radial-gradient(circle at top center, #0c1b36 0%, var(--bg) 55%);
-      color: var(--text);
-      line-height: 1.68;
-      padding: 24px 16px 64px;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
     }
-    .wrap { max-width: 840px; margin: 0 auto; }
-    nav { margin-bottom: 16px; font-size: 13px; color: var(--muted); }
-    nav a { color: var(--accent); text-decoration: none; margin-right: 14px; }
-    nav a:hover { text-decoration: underline; }
-    header, section {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 22px 24px;
-      margin-bottom: 16px;
+    .topbar { border-bottom: 1px solid var(--rule); background: var(--paper); }
+    .topbar-inner {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px 24px;
     }
-    h1 { margin: 0 0 8px; font-size: 26px; }
-    h2 { margin: 0 0 10px; font-size: 18px; color: var(--accent); }
-    p, li { font-size: 14px; color: #cbd5e1; }
-    ul { margin: 8px 0 0; padding-left: 20px; }
-    li + li { margin-top: 6px; }
-    code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 12px;
-      background: var(--elevated);
-      padding: 2px 6px;
-      border-radius: 6px;
-      color: #7dd3fc;
+    .brand {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      text-decoration: none;
     }
-    .meta { margin: 0; font-size: 13px; color: var(--muted); }
-    .badge {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 600;
-      background: rgba(52, 211, 153, 0.12);
-      color: var(--emerald);
-      border: 1px solid rgba(52, 211, 153, 0.3);
-    }
-    a { color: var(--accent); }
-    footer {
-      text-align: center;
-      margin-top: 24px;
-      font-size: 13px;
+    nav { display: flex; flex-wrap: wrap; gap: 16px; font-size: 14px; }
+    nav a {
       color: var(--muted);
+      text-decoration: none;
+      padding-bottom: 2px;
+      border-bottom: 2px solid transparent;
+    }
+    nav a:hover { color: var(--ink); }
+    nav a.active { color: var(--ink); font-weight: 600; border-bottom-color: var(--ink); }
+    main { max-width: 820px; margin: 0 auto; padding: 40px 20px 64px; }
+    .doc-header { padding-bottom: 22px; border-bottom: 1px solid var(--rule); margin-bottom: 30px; }
+    .eyebrow {
+      margin: 0 0 8px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 32px;
+      line-height: 1.22;
+    }
+    .meta-line { margin: 0; font-size: 14px; color: var(--muted); }
+    h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 21px;
+      margin: 34px 0 10px;
+      padding-top: 22px;
+      border-top: 1px solid var(--rule);
+    }
+    h2.first { border-top: 0; padding-top: 0; margin-top: 0; }
+    p { margin: 0 0 14px; }
+    ul { margin: 0 0 16px; padding-left: 22px; }
+    li + li { margin-top: 8px; }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px;
+      background: var(--wash);
+      padding: 1px 5px;
+      border: 1px solid var(--rule);
+    }
+    .callout {
+      background: var(--paper);
+      border-left: 3px solid var(--ink);
+      border-top: 1px solid var(--rule);
+      border-right: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    a { color: var(--link); }
+    footer {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 24px 20px 48px;
+      border-top: 1px solid var(--rule);
+      font-size: 13.5px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px 16px;
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <nav>
-      <a href="./index.html">&larr; Legal Center</a>
-      <a href="./terms.html">Terms of Service</a>
-      <a href="./data-protection.html">Data Protection</a>
-      <a href="./permissions.html">Permissions</a>
-      <a href="./support.html">Support</a>
-    </nav>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./index.html">Marcus AI: Home Launcher</a>
+      <nav aria-label="Legal documents">
+        <a href="./index.html">Overview</a>
+        <a class="active" href="./privacy.html">Privacy Policy</a>
+        <a href="./data-protection.html">UK GDPR</a>
+        <a href="./permissions.html">Permissions</a>
+        <a href="./terms.html">Terms</a>
+        <a href="./support.html">Support</a>
+      </nav>
+    </div>
+  </header>
 
-    <header>
+  <main>
+    <div class="doc-header">
+      <p class="eyebrow">Privacy Policy</p>
       <h1>Privacy Policy</h1>
-      <p class="meta">
-        App: <strong>Marcus AI: Home Launcher</strong> (internal codename <code>Marcus-2</code>, v0.2.39 / Build 59)<br />
-        Android Package: <code>com.jchristopherfranklin.marcus</code><br />
-        Developer &amp; Data Controller: <strong>Jack Chris Franklin</strong> (<a href="mailto:jackchrisfranklin@gmail.com">jackchrisfranklin@gmail.com</a>)<br />
-        Effective Date: <strong>November 2026</strong>
+      <p class="meta-line">
+        <strong>Marcus AI: Home Launcher</strong> (<code>Marcus-2</code>, v0.2.45 / Android Build 65) &middot;
+        Package: <code>com.jchristopherfranklin.marcus</code><br />
+        Data Controller: <strong>Jack Christopher Franklin</strong> (<a href="mailto:jackchrisfranklin@gmail.com">jackchrisfranklin@gmail.com</a>) &middot;
+        Effective Date: <strong>November 2026</strong> &middot;
+        Governing Law: <strong>England and Wales</strong>
       </p>
-      <span class="badge">Local-First AI &middot; Zero Ads &middot; Zero Behavioural Trackers</span>
-    </header>
+    </div>
 
-    <section>
-      <h2>1. Core Privacy Architecture</h2>
-      <p>
-        Marcus AI: Home Launcher is an Android home-screen replacement (<code>CATEGORY_HOME</code>) and on-device voice assistant built around local, private computation. By default, <strong>100% Offline Privacy Mode is ON</strong> on initial launch, blocking outbound background requests for weather, web searches, and model downloads. During first-time <strong>Guided Setup (Step 1)</strong>, the app explicitly notes this default and recommends toggling <strong>Online Mode ON</strong> if you want live weather forecasts, live web answers in Direct Chat, or model downloads&mdash;without ever enabling network access automatically behind your back.
-      </p>
-      <ul>
-        <li><strong>No Developer Cloud Backend:</strong> We do not operate proprietary servers to collect, store, profile, or sell your personal conversations, notes, contacts, location, or media.</li>
-        <li><strong>No Advertising or Cross-App Tracking:</strong> The app contains zero advertising SDKs, zero behavioral ad networks, and zero data brokerage.</li>
-        <li><strong>No Mandatory Account Sign-Up:</strong> You do not register an email address or password to use the launcher.</li>
-      </ul>
-    </section>
+    <h2 class="first">1. Who We Are and How This App Works</h2>
+    <p>
+      Marcus AI: Home Launcher is an Android home screen replacement (<code>CATEGORY_HOME</code>) and local voice assistant developed and published by <strong>Jack Christopher Franklin</strong>. For the purposes of the UK General Data Protection Regulation (<strong>UK GDPR</strong>) and the Data Protection Act 2018, Jack Christopher Franklin is the data controller for any limited processing governed by this policy.
+    </p>
+    <p>
+      The application is designed so that your launcher layout, assistant state, files, speech, and personal history remain on your own Android device. We do not operate proprietary user accounts, cloud sync servers, advertising SDKs, or behavioural analytics SDKs.
+    </p>
 
-    <section>
-      <h2>2. Data Stored Locally on Your Device</h2>
-      <p>Your personal launcher configuration and assistant state stay inside your phone&rsquo;s private internal storage and <code>SharedPreferences</code>:</p>
-      <ul>
-        <li><strong>Assistant &amp; HUD Preferences:</strong> Configured assistant name, user honorific/title, interface theme preset, optional custom home/lock wallpaper image (<code>custom_wallpaper.jpg</code>), 40&times;19 ASCII/pixel emoticon or Circular Sci-Fi Core display mode, Piper-TTS voice selection, and low-battery alert rules.</li>
-        <li><strong>Notes, Alarms, Timers, Reminders &amp; Voice Vault:</strong> Offline notes, schedule records, and local M4A voice recordings captured via the opt-in Voice Notes Recorder stay inside private app storage (<code>files/voice_vault/</code>).</li>
-        <li><strong>Conversation Logs (<code>memory.csv</code> / <code>sync_memory.csv</code>), Direct Chat Threads &amp; Habit Sequences:</strong> Optional on-device conversation memory, standalone Direct LLM Chat sessions (<code>direct_chat_sessions_v1.json</code>), and Markov habit transitions (<code>Cerebellum</code>). Direct LLM Chat queries your offline Knowledge Bank first and reads <code>memory.csv</code> strictly read-only when relevant without mutating launcher intent weights. You can pause logging, edit or delete entries, export <code>memory.csv</code>, or wipe everything at once in <em>Settings &rarr; Privacy, Security &amp; Legal</em>.</li>
-        <li><strong>Optional Face Recognition Security:</strong> Disabled by default. If you choose to enroll a face profile using the front camera, only local mathematical facial geometry vectors are stored in private on-device storage&mdash;no raw photos or biometric vectors leave your device.</li>
-        <li><strong>HUD Gallery &amp; Local Media Player:</strong> Indexes device audio (<code>READ_MEDIA_AUDIO</code>) and device photos/videos (<code>READ_MEDIA_IMAGES</code> / <code>READ_MEDIA_VIDEO</code>) strictly on-device with <strong>strict zero autoplay</strong>; playback pauses immediately on exit or screen lock unless you explicitly opt into Android Picture-in-Picture (PiP). Files placed in the <strong>Private Folder</strong> are copied into private app storage (<code>files/gallery_private/</code> with index <code>gallery_vault_v1.json</code>) and protected by a locally salted SHA-256 PIN hash (and optional local Face Recognition), locking automatically when you leave the Gallery or turn off the screen. If you forget your Private Folder PIN, you can recover access via Android&rsquo;s system lockscreen prompt (<code>KeyguardManager</code>); Android validates your device credential natively and returns only a pass/fail result so Marcus never sees or stores your device PIN or biometrics.</li>
-        <li><strong>On-Device AI Models &amp; Voices:</strong> Downloaded LiteRT-LM language models (e.g. Gemma / Qwen) and Piper-TTS ONNX voice models are stored locally in <code>files/models</code> and <code>files/piper_voices</code>.</li>
-      </ul>
-    </section>
+    <div class="callout">
+      <strong>Offline by default:</strong> When you first install the app, <em>100% Offline Privacy Mode</em> is switched <strong>ON</strong>, which blocks outbound requests for weather forecasts, Direct Chat web searches, and optional AI/voice downloads. Step 1 of Guided Setup explains this setting and invites you to switch Online Mode ON if you want live weather, live web lookup, or model downloads&mdash;the choice is always yours.
+    </div>
 
-    <section>
-      <h2>3. Zero-PII Knowledge Bank &amp; User Plugins</h2>
-      <p>
-        When enabled, Marcus caches general non-personal factual summaries in an on-device file (<code>knowledge_bank.json</code>) for offline answers across both Home voice/text commands and Direct LLM Chat. Direct LLM Chat queries your offline Knowledge Bank first and, when Online Mode is enabled and live search results are retrieved, automatically submits sanitized public factual snippets through the Zero-PII filter for future offline recall. Users may also write or import local extensions (JavaScript, TypeScript, Python, or JSON) under <em>Settings &rarr; Plugins &amp; Extensions</em>; zero third-party plugins are pre-installed.
-      </p>
-      <ul>
-        <li><strong>Dual-Layer PII Filtering:</strong> Candidate Knowledge Bank entries are stripped of URLs and <code>@handles</code> and screened by regex filters (blocking emails, phone numbers, street addresses, postcodes, IPv4 addresses, API tokens, 6+ digit numbers, your configured name, and personal phrases) plus the local on-device LLM Privacy Auditor when loaded.</li>
-        <li><strong>One-Tap Removal:</strong> You can disable Knowledge Bank caching, delete individual items, export JSON, or wipe all Knowledge Bank and plugin data at any time.</li>
-      </ul>
-    </section>
+    <h2>2. Data Stored Locally on Your Device</h2>
+    <p>When you use Marcus AI: Home Launcher, the following information is stored strictly inside your device&rsquo;s private application storage and <code>SharedPreferences</code>:</p>
+    <ul>
+      <li><strong>Launcher Layout &amp; Appearance:</strong> Your configured assistant name, honorific/title, interface mode (Mobile, Desktop, or Adaptive), Home and Bottom Dock shortcut selections, icon size and label preferences, Dark Grid or other geometric backdrop pattern choices, and optional custom wallpaper image (<code>custom_wallpaper.jpg</code>).</li>
+      <li><strong>Notes, Alarms, Timers, Reminders &amp; Voice Vault:</strong> Personal notes, schedule items, and optional <code>.m4a</code> audio memos recorded with the Voice Notes Recorder inside <code>files/voice_vault/</code>.</li>
+      <li><strong>Conversation Logs, Direct Chat &amp; Habit Sequences:</strong> Optional home conversation turns (<code>sync_memory.csv</code>, exported as <code>memory.csv</code>), standalone Direct LLM Chat sessions (<code>direct_chat_sessions_v1.json</code>), and Markov habit transitions (<code>Cerebellum</code>). Direct LLM Chat queries your offline Knowledge Bank first and reads <code>memory.csv</code> strictly read-only when relevant. Logging can be paused, edited, exported, or wiped at any time.</li>
+      <li><strong>Installed App Routing (App-First Voice Control):</strong> Marcus scans installed launcher packages locally via Android&rsquo;s package manager so you can launch installed or system apps (for example, opening Google Keep when you ask to open Keep Notes) before falling back to Marcus&rsquo;s own applets unless Marcus is explicitly named. Your installed app list never leaves your phone.</li>
+      <li><strong>HUD Gallery &amp; Private Folder:</strong> Indexes local photos, videos, and audio strictly on-device with zero autoplay. Items moved to the <strong>Private Folder</strong> are copied into private app storage (<code>files/gallery_private/</code> and <code>gallery_vault_v1.json</code>) and locked with a locally salted SHA-256 PIN hash (and optional local face unlock). The vault locks automatically when you exit the Gallery or turn off the screen. If you forget your Private Folder PIN, you can recover access using Android&rsquo;s system lockscreen prompt (<code>KeyguardManager</code>): Android verifies your device PIN, pattern, or biometric natively and returns only a pass or fail result to Marcus.</li>
+      <li><strong>Optional Face Recognition Profiles:</strong> Off by default. If enabled, mathematical facial geometry vectors are stored only on your device inside <code>SharedPreferences</code>; no face images or vectors are transmitted off the phone.</li>
+      <li><strong>Downloaded AI Models, Voices &amp; Optional Offline STT Pack:</strong> Downloaded LiteRT-LM language models (<code>files/models/</code>), Piper-TTS ONNX voices (<code>files/piper_voices/</code>), and the optional Wav2Vec2-Base-960h quantized ONNX speech-to-text backup (<code>files/offline_stt/</code>) live solely in private app storage and are excluded from Google Cloud Auto Backup and device-to-device transfers.</li>
+    </ul>
 
-    <section>
-      <h2>4. Permissions &amp; Optional System Integrations</h2>
-      <ul>
-        <li><strong>Photos, Videos &amp; Audio (<code>READ_MEDIA_IMAGES</code>, <code>READ_MEDIA_VIDEO</code>, <code>READ_MEDIA_AUDIO</code>, Optional):</strong> Prompted only when you scan media for the HUD Gallery or offline Media Player. All thumbnails, frames, and playback remain strictly on-device; optional system gallery hand-off opens your chosen file directly in Android&rsquo;s built-in gallery via <code>ACTION_VIEW</code>.</li>
-        <li><strong>Notification Listener Access (Optional):</strong> When enabled in Android settings, <code>MarcusNotificationListener</code> reads active notifications locally in memory to display external media playback controls, summarize recent alerts on command, announce incoming calls, and&mdash;for Marcus Pro subscribers who enable it&mdash;prompt missed-call callback replies or read messages strictly from contacts on your <strong>Auto-Read Contacts</strong> allowlist.</li>
-        <li><strong>Contacts (<code>READ_CONTACTS</code>, Optional):</strong> Used locally to match caller/sender names for spoken alerts. The app intentionally omits <code>READ_SMS</code> and <code>RECEIVE_SMS</code> permissions.</li>
-        <li><strong>Microphone (<code>RECORD_AUDIO</code>, <code>FOREGROUND_SERVICE_MICROPHONE</code>):</strong> Used only when you activate voice listening, Direct LLM Chat dictation, wake-word mode, or the optional Voice Notes Recorder.</li>
-        <li><strong>Location (<code>ACCESS_FINE_LOCATION</code> / <code>ACCESS_COARSE_LOCATION</code>, Optional Pro Feature):</strong> Disabled by default (manual city lookup is used instead). Coordinates are used solely for local weather queries when Automatic GPS Location Updates are enabled by you while Offline Privacy Mode is off.</li>
-        <li><strong>Installed Apps &amp; Wallpaper (<code>QUERY_ALL_PACKAGES</code>, <code>REQUEST_DELETE_PACKAGES</code>, <code>SET_WALLPAPER</code>):</strong> Required to list, launch, hide, or uninstall apps in your Home Launcher drawer and sync launcher backgrounds to your home/lock screen.</li>
-        <li><strong>Bluetooth (<code>BLUETOOTH_CONNECT</code>, <code>BLUETOOTH_SCAN</code> with <code>neverForLocation</code>):</strong> Used only for user-initiated hands-free Bluetooth audio device connection; never used for location tracking.</li>
-      </ul>
-    </section>
+    <h2>3. Voice Recognition &amp; Custom ROM Offline Backup</h2>
+    <p>
+      For normal voice input, Marcus invokes Android&rsquo;s system <code>SpeechRecognizer</code> service configured on your device (whose handling depends on your chosen Android system speech provider, such as Google Speech Services).
+    </p>
+    <p>
+      For devices or custom ROMs that lack a system speech recognition service (or when system recognition fails), Marcus includes an <strong>optional offline Wav2Vec2-Base-960h ONNX speech-to-text engine</strong>. Nothing is downloaded automatically. Only if you manually tap <em>Download Offline STT (~95 MB)</em> while Online Mode is enabled&mdash;or manually import your own <code>model_quantized.onnx</code> and <code>vocab.json</code> files from device storage&mdash;will the offline model be installed in <em>Settings &rarr; Assistant &amp; Voice</em>. Once installed, voice capture uses Android&rsquo;s <code>AudioRecord</code> at 16 kHz and transcribes speech completely offline in device memory without sending audio recordings over the network.
+    </p>
 
-    <section>
-      <h2>5. Subscriptions, In-App Purchases &amp; RevenueCat</h2>
-      <p>
-        Marcus AI: Home Launcher is free to install with core launcher, Direct LLM Chat, HUD Gallery, and on-device AI features. Optional <strong>Marcus Pro</strong> upgrades (Yearly subscription, Monthly subscription, and Lifetime unlock, entitlement <code>marcus_ai_home_launcher_pro</code>) are processed through <strong>Google Play Billing</strong> and verified via <strong>RevenueCat</strong> (<code>RevenueCat, Inc.</code> Android SDK <code>11.4.3</code>).
-      </p>
-      <ul>
-        <li><strong>Data Processed for Billing:</strong> When you purchase, restore purchases, or open Customer Center, Google Play and RevenueCat process an anonymous/app-generated RevenueCat App User ID, Google Play purchase tokens/receipts, product identifiers, and entitlement expiration/renewal status solely to unlock and manage your Pro subscription.</li>
-        <li><strong>Offline Entitlement Cache:</strong> Your active entitlement status is cached locally on-device (<code>SharedPreferences</code>) so paying subscribers and lifetime owners retain Pro features when offline or in airplane mode.</li>
-        <li><strong>Payment Details:</strong> Card numbers and billing addresses are handled exclusively by Google Play; the developer never sees or stores your payment card details. See <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener noreferrer">RevenueCat&rsquo;s Privacy Policy</a> and <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google&rsquo;s Privacy Policy</a> for their billing disclosures.</li>
-      </ul>
-    </section>
+    <h2>4. Knowledge Bank, Direct Chat Web Search &amp; Zero-PII Filtering</h2>
+    <p>
+      When enabled, the local Knowledge Bank (<code>knowledge_bank.json</code>) caches concise, non-personal factual summaries on your device. Both home commands and Direct LLM Chat check your offline Knowledge Bank before searching online. When Online Mode is active and Direct Chat retrieves public search snippets (from DuckDuckGo Instant/HTML and Wikipedia summaries), results are automatically screened and stripped of URLs, <code>@handles</code>, emails, phone numbers, street addresses, UK postcodes, IP addresses, API tokens, 6+ digit numbers, your configured name, and personal phrasing before being saved for offline recall.
+    </p>
 
-    <section>
-      <h2>6. Optional Outbound Network Connections</h2>
-      <p>When Offline Privacy Mode is turned OFF (or when you explicitly initiate an online action/purchase), outbound connections occur strictly for:</p>
-      <ul>
-        <li><strong>Weather &amp; Hourly Refinement:</strong> Open-Meteo / wttr.in requests for your chosen city or optional GPS coordinates.</li>
-        <li><strong>Model &amp; Voice Downloads:</strong> Downloading LiteRT-LM models or Piper ONNX voices from Hugging Face at your explicit request.</li>
-        <li><strong>Direct LLM Chat Live Search &amp; Browser Handoff:</strong> When Offline Privacy Mode is OFF (or you opt in on a prompt), Direct LLM Chat can query DuckDuckGo Instant/HTML and Wikipedia summaries to answer time-sensitive questions local model weights lack; launcher web search intents hand off directly to your default browser (<code>ACTION_VIEW</code>).</li>
-        <li><strong>Google Play &amp; RevenueCat Entitlement Sync:</strong> Fetching offering prices, verifying purchases, restoring entitlements, or loading Customer Center.</li>
-        <li><strong>Optional Anonymous Bug Reports:</strong> Triggered only if you tap <em>Send Anonymous Bug Report</em>, opening your own email client pre-addressed to <a href="mailto:jackchrisfranklin@gmail.com">jackchrisfranklin@gmail.com</a> with paths, emails, URLs, IP addresses, phone numbers, and tokens automatically scrubbed.</li>
-      </ul>
-    </section>
+    <h2>5. User-Created Plugins</h2>
+    <p>
+      Zero third-party plugins are pre-installed. If you create or import local scripts (JavaScript, TypeScript, Python, or JSON) under <em>Settings &rarr; Plugins &amp; Extensions</em>, those scripts run locally under the capabilities you explicitly grant and respect <em>100% Offline Privacy Mode</em>.
+    </p>
 
-    <section>
-      <h2>7. UK GDPR Rights &amp; Data Deletion</h2>
-      <p>
-        Because nearly all user data lives locally on your device, you exercise immediate UK GDPR control inside the app:
-      </p>
-      <ul>
-        <li><strong>Access &amp; Portability:</strong> Export your conversation log (<code>memory.csv</code>), intents (<code>intents.json</code>), and Knowledge Bank (<code>knowledge_bank.json</code>) from Settings.</li>
-        <li><strong>Rectification &amp; Complete Erasure:</strong> Edit or delete individual memories, Direct Chat sessions, or Private Folder items, or tap <strong>Erase All Data</strong> in <em>Settings &rarr; Privacy, Security &amp; Legal</em> to permanently wipe <code>memory.csv</code> / <code>sync_memory.csv</code>, Cerebellum Markov sequences, Lill-E emotional state, <code>knowledge_bank.json</code>, custom plugins, Direct Chat sessions, Private Gallery Vault files &amp; salted PIN, Voice Vault M4A recordings, notes, alarms, reminders, custom wallpaper, Hugging Face token, auto-read contacts, captured messages/notifications, and enrolled face profiles in one tap. Uninstalling the app also removes all local app storage.</li>
-        <li><strong>Billing Data Inquiries:</strong> To request deletion of anonymous RevenueCat purchase records associated with your App User ID, contact <a href="mailto:jackchrisfranklin@gmail.com">jackchrisfranklin@gmail.com</a>.</li>
-      </ul>
-    </section>
+    <h2>6. Subscriptions, Purchases &amp; Billing (Google Play &amp; RevenueCat)</h2>
+    <p>
+      Core launcher features, Direct LLM Chat, HUD Gallery, and on-device AI tools are free. Optional <strong>Marcus Pro</strong> upgrades (Yearly subscription, Monthly subscription, or one-time Lifetime unlock under entitlement <code>marcus_ai_home_launcher_pro</code>) are billed exclusively through <strong>Google Play Billing</strong> and verified via <strong>RevenueCat, Inc.</strong> (Android SDK <code>11.4.3</code>).
+    </p>
+    <ul>
+      <li><strong>Data Processed for Billing:</strong> Google Play and RevenueCat process an anonymous/app-scoped RevenueCat App User ID, Google Play purchase tokens, product identifiers, and entitlement status solely to validate, restore, and manage your Pro licence.</li>
+      <li><strong>No Card Details Seen by Developer:</strong> Payment cards and billing addresses are handled only by Google Play.</li>
+      <li><strong>Offline Caching:</strong> Your active Pro status is cached in private on-device preferences so paid subscribers retain access offline.</li>
+      <li><strong>Third-Party Policies:</strong> See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google&rsquo;s Privacy Policy</a> and <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener noreferrer">RevenueCat&rsquo;s Privacy Policy</a>.</li>
+    </ul>
 
-    <section>
-      <h2>8. Children&rsquo;s Privacy &amp; Policy Updates</h2>
-      <p>
-        Marcus AI: Home Launcher is a general-utility launcher not directed at children under 13 (or the applicable minimum digital consent age in your region). We do not knowingly collect personal data from children. Material changes to this policy will be posted at this URL and reflected in app updates.
-      </p>
-    </section>
+    <h2>7. Outbound Network Requests (Only When Online Mode Is Enabled or Triggered)</h2>
+    <p>When <em>100% Offline Privacy Mode</em> is switched OFF (or when you explicitly confirm a purchase or bug report), outbound network requests occur strictly for:</p>
+    <ul>
+      <li><strong>Weather Forecasts:</strong> Requests to Open-Meteo or <code>wttr.in</code> for your chosen city or (if opted in) GPS coordinates.</li>
+      <li><strong>Live Web Search in Direct Chat:</strong> Queries to DuckDuckGo and Wikipedia summaries when you ask Direct Chat a live or web-search question; launcher web searches hand off directly to your default browser via <code>ACTION_VIEW</code>.</li>
+      <li><strong>User-Initiated Model &amp; Voice Downloads:</strong> Downloading LiteRT-LM language models, Piper ONNX voices, or the optional Wav2Vec2 ONNX speech backup from Hugging Face only when you tap Download (using your optional Hugging Face token if supplied for gated downloads).</li>
+      <li><strong>Google Play &amp; RevenueCat Verification:</strong> Retrieving prices, verifying purchases, restoring purchases, or opening Customer Center.</li>
+      <li><strong>Manual Anonymous Bug Reports:</strong> Triggered only if you tap <em>Send Anonymous Bug Report</em>, which opens your own email app addressed to <a href="mailto:jackchrisfranklin@gmail.com">jackchrisfranklin@gmail.com</a> after scrubbing file paths, email addresses, URLs, IP addresses, phone numbers, and tokens from local diagnostics.</li>
+    </ul>
 
-    <footer>
-      <p>
-        &copy; Jack Chris Franklin &middot; Contact: <a href="mailto:jackchrisfranklin@gmail.com">jackchrisfranklin@gmail.com</a>
-      </p>
-    </footer>
-  </div>
+    <h2>8. Your Rights Under UK GDPR</h2>
+    <p>
+      Full details of our lawful bases, backup exclusions, and your rights of access, export, rectification, restriction, and one-tap complete erasure are set out in our <a href="./data-protection.html">Data Protection &amp; UK GDPR Notice</a>. You may contact <a href="mailto:jackchrisfranklin@gmail.com">jackchrisfranklin@gmail.com</a> with any privacy request, including deletion of anonymous RevenueCat purchase identifiers, and UK residents have the right to complain to the Information Commissioner&rsquo;s Office (<a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer">ico.org.uk</a>).
+    </p>
+
+    <h2>9. Children&rsquo;s Privacy &amp; Updates</h2>
+    <p>
+      Marcus AI: Home Launcher is a general-purpose Android utility and is not directed at children under 13 (or the relevant digital consent age in your jurisdiction). We do not knowingly collect personal data from children. Material updates to this policy will be published at this page with an updated effective date.
+    </p>
+  </main>
+
+  <footer>
+    <span>&copy; 2026 Jack Christopher Franklin</span>
+    <span><a href="mailto:jackchrisfranklin@gmail.com">jackchrisfranklin@gmail.com</a> &middot; England and Wales Law</span>
+  </footer>
 </body>
 </html>

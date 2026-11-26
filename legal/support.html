@@ -1,94 +1,189 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Support &amp; Help — Marcus AI: Home Launcher</title>
-  <meta name="description" content="Support guide, hardware minimum specs, and user help for Marcus AI: Home Launcher v0.2.39." />
+  <title>Support &amp; User Guide — Marcus AI: Home Launcher</title>
+  <meta name="description" content="Support contact, custom-ROM offline speech recognition setup, Online Mode instructions, and troubleshooting for Marcus AI: Home Launcher v0.2.45." />
   <style>
     :root {
-      color-scheme: dark;
-      --bg: #030914;
-      --surface: #0b1322;
-      --elevated: #111c32;
-      --border: #1e2d4a;
-      --text: #e2e8f0;
-      --muted: #94a3b8;
-      --accent: #38bdf8;
+      --bg: #faf9f6;
+      --paper: #ffffff;
+      --wash: #f3f1ec;
+      --ink: #171a1f;
+      --muted: #575d68;
+      --rule: #d8d3c8;
+      --link: #1d4ed8;
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
       background: var(--bg);
-      color: var(--text);
-      line-height: 1.68;
-      padding: 24px 16px 64px;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
     }
-    .wrap { max-width: 820px; margin: 0 auto; }
-    nav { margin-bottom: 16px; font-size: 13px; color: var(--muted); }
-    nav a { color: var(--accent); text-decoration: none; margin-right: 12px; }
-    header, section {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 22px 24px;
-      margin-bottom: 16px;
+    .topbar { border-bottom: 1px solid var(--rule); background: var(--paper); }
+    .topbar-inner {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px 24px;
     }
-    h1 { margin: 0 0 8px; font-size: 26px; }
-    h2 { margin: 0 0 10px; font-size: 18px; color: var(--accent); }
-    p, li { font-size: 14px; color: #cbd5e1; }
-    li + li { margin-top: 8px; }
-    code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    .brand {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    nav { display: flex; flex-wrap: wrap; gap: 16px; font-size: 14px; }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      padding-bottom: 2px;
+      border-bottom: 2px solid transparent;
+    }
+    nav a:hover { color: var(--ink); }
+    nav a.active { color: var(--ink); font-weight: 600; border-bottom-color: var(--ink); }
+    main { max-width: 820px; margin: 0 auto; padding: 40px 20px 64px; }
+    .doc-header { padding-bottom: 22px; border-bottom: 1px solid var(--rule); margin-bottom: 30px; }
+    .eyebrow {
+      margin: 0 0 8px;
       font-size: 12px;
-      background: var(--elevated);
-      padding: 2px 6px;
-      border-radius: 6px;
-      color: #7dd3fc;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
     }
-    .meta { margin: 0; font-size: 13px; color: var(--muted); }
-    a { color: var(--accent); }
+    h1 {
+      margin: 0 0 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 32px;
+      line-height: 1.22;
+    }
+    .meta-line { margin: 0; font-size: 14px; color: var(--muted); }
+    h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 21px;
+      margin: 34px 0 10px;
+      padding-top: 22px;
+      border-top: 1px solid var(--rule);
+    }
+    h2.first { border-top: 0; padding-top: 0; margin-top: 0; }
+    h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 22px 0 6px;
+    }
+    p { margin: 0 0 14px; }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px;
+      background: var(--wash);
+      padding: 1px 5px;
+      border: 1px solid var(--rule);
+    }
+    .contact-box {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      padding: 20px 22px;
+      margin-bottom: 28px;
+    }
+    a { color: var(--link); }
+    footer {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 24px 20px 48px;
+      border-top: 1px solid var(--rule);
+      font-size: 13.5px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px 16px;
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <nav>
-      <a href="./index.html">&larr; Legal Center</a>
-      <a href="./privacy.html">Privacy Policy</a>
-      <a href="./data-protection.html">Data Protection</a>
-      <a href="./permissions.html">Permissions</a>
-      <a href="./terms.html">Terms</a>
-    </nav>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./index.html">Marcus AI: Home Launcher</a>
+      <nav aria-label="Legal documents">
+        <a href="./index.html">Overview</a>
+        <a href="./privacy.html">Privacy Policy</a>
+        <a href="./data-protection.html">UK GDPR</a>
+        <a href="./permissions.html">Permissions</a>
+        <a href="./terms.html">Terms</a>
+        <a class="active" href="./support.html">Support</a>
+      </nav>
+    </div>
+  </header>
 
-    <header>
+  <main>
+    <div class="doc-header">
+      <p class="eyebrow">Help &amp; Developer Support</p>
       <h1>Support &amp; Troubleshooting</h1>
-      <p class="meta">
-        Marcus AI: Home Launcher v0.2.39 (<code>Marcus-2</code>, Build 59) &middot; Developer: <strong>Jack Chris Franklin</strong>
+      <p class="meta-line">
+        <strong>Marcus AI: Home Launcher</strong> v0.2.45 (<code>Marcus-2</code>, Build 65) &middot;
+        Developer: <strong>Jack Christopher Franklin</strong>
       </p>
-    </header>
+    </div>
 
-    <section>
-      <h2>Direct Support Contact</h2>
-      <p>
-        Need help, want to share feedback, report a crash, or inquire about a Marcus Pro purchase? Email <a href="mailto:jackchrisfranklin@gmail.com">jackchrisfranklin@gmail.com</a> with your Android device model and OS version, or tap <em>Send Anonymous Bug Report</em> inside <em>Settings &rarr; Apps &amp; Support</em>.
+    <div class="contact-box">
+      <h2 class="first" style="margin-bottom: 8px;">Direct Developer Support</h2>
+      <p style="margin-bottom: 0;">
+        For help with setup, bug reports, GDPR queries, or Marcus Pro billing questions, email <a href="mailto:jackchrisfranklin@gmail.com">jackchrisfranklin@gmail.com</a> with your phone model, ROM/Android version, and a brief description of the issue, or tap <em>Send Anonymous Bug Report</em> under <em>Settings &rarr; Apps &amp; Support</em>.
       </p>
-    </section>
+    </div>
 
-    <section>
-      <h2>Quick Answers &amp; Launcher Navigation</h2>
-      <ul>
-        <li><strong>Why don&rsquo;t live Weather or Direct Chat Web Search connect on first launch?</strong> <em>100% Offline Privacy Mode</em> is ON by default to protect your privacy. During <strong>Guided Setup (Step 1)</strong>&mdash;or anytime in <em>Settings &rarr; Privacy, Security &amp; Legal</em>&mdash;toggle <strong>Online Mode ON</strong> if you want live weather forecasts, web search, or model downloads.</li>
-        <li><strong>How are the Home Launcher pages arranged?</strong> Swipe horizontally across 4 pages: <strong>Direct Chat</strong> (left) &middot; <strong>Home</strong> (center default) &middot; <strong>Media</strong> (right 1) &middot; <strong>HUD Gallery</strong> (right 2).</li>
-        <li><strong>How does Direct LLM Chat handle web searches and the Knowledge Bank?</strong> Direct Chat uses a fast regex search-intent classifier (recognizing commands like <em>&ldquo;search the web for&hellip;&rdquo;</em> or <em>&ldquo;look up&hellip;&rdquo;</em>), checks your offline <code>knowledge_bank.json</code> first, reads <code>memory.csv</code> read-only for context, and&mdash;when Online Mode is enabled&mdash;fetches web snippets cleanly without getting stuck in an offline uncertainty loop, auto-saving PII-filtered facts to your Knowledge Bank.</li>
-        <li><strong>How does the HUD Gallery handle videos, PiP, and forgotten Private PINs?</strong> Videos never autoplay while browsing or opening and stop cleanly on exit or screen lock unless you tap <strong>PiP</strong>. Drag the concentric rotary dial to step items (or scrub videos / zoom photos when maximized), or tap <em>System Gallery</em> to open the active file in Android&rsquo;s built-in viewer. If you forget your Private Folder PIN, tap <strong>Forgot PIN? Use System Lockscreen PIN</strong> to verify via Android&rsquo;s native device lockscreen and reset access.</li>
-        <li><strong>What does &ldquo;UK GDPR Erase All Data&rdquo; remove?</strong> It permanently clears <code>memory.csv</code>, Cerebellum habits, <code>knowledge_bank.json</code>, custom plugins, Direct Chat threads, Private Gallery Vault media &amp; PIN, Voice Vault recordings, notes, alarms, reminders, custom wallpaper, Hugging Face token, captured notifications, and enrolled face profiles from the device.</li>
-        <li><strong>Where do I switch between Marcus ASCII &amp; Circular Sci-Fi Core?</strong> Open <em>Settings &rarr; Assistant &amp; Voice &rarr; Emoticon Customisation</em> (also selectable in Guided Setup).</li>
-        <li><strong>Why does an AI model show &ldquo;Blocked / Ultra Eco Intent Mode&rdquo;?</strong> Lower-RAM or 32-bit devices or models running under the 8 tokens/second floor automatically protect device stability by keeping you on instant zero-RAM Ultra Eco intent routing.</li>
-        <li><strong>How do I set Marcus as my default Home screen?</strong> Open <em>Settings &rarr; Apps &amp; Support &rarr; Set Marcus as Home Launcher</em> and choose Marcus in Android&rsquo;s Default Home App menu.</li>
-        <li><strong>How do I rearrange Home screen widgets or Drawer apps?</strong> Long-press empty space on Home (or tap <em>Edit Home</em> in Settings) to reorder Home widgets and drag Marcus/system apps inside the App Drawer.</li>
-      </ul>
-    </section>
-  </div>
+    <h2 class="first">Frequently Asked Questions</h2>
+
+    <h3>My custom ROM lacks Google Speech Services. How do I use voice commands?</h3>
+    <p>
+      Open <em>Settings &rarr; Assistant &amp; Voice &rarr; Offline Speech Recognition Backup (Custom ROMs)</em>. You can tap <em>Download Offline STT (~95 MB)</em> (requires Online Mode enabled) to fetch the quantized Wav2Vec2-Base-960h ONNX backup manually, or import <code>model_quantized.onnx</code> and <code>vocab.json</code> directly from device storage. Nothing downloads automatically without your tap, and once installed Marcus automatically falls back to offline speech recognition whenever Android&rsquo;s built-in speech recognizer is unavailable or errors out.
+    </p>
+
+    <h3>How does voice routing decide between an Android app and Marcus&rsquo;s internal applets?</h3>
+    <p>
+      Commands like <em>&ldquo;open Keep Notes&rdquo;</em>, <em>&ldquo;open Gallery&rdquo;</em>, or <em>&ldquo;open Calculator&rdquo;</em> prioritise your installed Android apps first (launching Google Keep, your phone&rsquo;s Gallery, etc.). If you want Marcus&rsquo;s own built-in view instead, include <strong>Marcus</strong> (or your custom assistant name) or <em>&ldquo;built-in&rdquo;</em>&mdash;for example, <em>&ldquo;open Marcus notes&rdquo;</em> or <em>&ldquo;open Marcus gallery&rdquo;</em>.
+    </p>
+
+    <h3>Why don&rsquo;t live Weather or Direct Chat Web Search connect immediately after install?</h3>
+    <p>
+      <em>100% Offline Privacy Mode</em> is ON by default so no background network calls leave your device without permission. In <strong>Guided Setup (Step 1)</strong>&mdash;or anytime under <em>Settings &rarr; Privacy, Security &amp; Legal</em>&mdash;switch <strong>Online Mode ON</strong> if you want live forecasts, web search inside Direct Chat, or model downloads.
+    </p>
+
+    <h3>How do I customise Home icons, labels, and geometric backgrounds?</h3>
+    <p>
+      Open <em>Settings &rarr; Wallpaper, Display &amp; Home</em>. Home shortcuts and the Bottom Dock default to borderless squircle icons with text labels hidden for a clean look. You can adjust icon size together using the <strong>Small</strong>, <strong>Medium</strong>, <strong>Large</strong>, or <strong>XL</strong> chips, toggle icon text labels on, and choose between <strong>Dark Grid</strong> (default) and five other free geometric backdrop patterns.
+    </p>
+
+    <h3>How do I recover access if I forget my HUD Gallery Private Folder PIN?</h3>
+    <p>
+      On the Private Folder lock screen, tap <em>Forgot PIN? Use System Lockscreen PIN</em>. Android&rsquo;s native <code>KeyguardManager</code> prompt verifies your phone&rsquo;s own PIN, pattern, or fingerprint and unlocks reset access without exposing your system credential to Marcus.
+    </p>
+
+    <h3>How are the launcher pages organised?</h3>
+    <p>
+      Swipe horizontally across four pages: <strong>Direct Chat</strong> (left) &middot; <strong>Home</strong> (centre default) &middot; <strong>Media</strong> (right 1) &middot; <strong>HUD Gallery</strong> (right 2). You can hide or reorder pages in <em>Settings &rarr; Wallpaper, Display &amp; Home</em>.
+    </p>
+
+    <h3>Why does an on-device LLM show &ldquo;Blocked / Ultra Eco Intent Mode&rdquo;?</h3>
+    <p>
+      To avoid out-of-memory crashes or heavy battery drain on lower-RAM or 32-bit hardware, models that exceed safe device memory or drop below the 8 tokens/second floor automatically keep your phone on zero-RAM Ultra Eco intent routing.
+    </p>
+  </main>
+
+  <footer>
+    <span>&copy; 2026 Jack Christopher Franklin</span>
+    <span><a href="mailto:jackchrisfranklin@gmail.com">jackchrisfranklin@gmail.com</a> &middot; Governed by England and Wales Law</span>
+  </footer>
 </body>
 </html>
